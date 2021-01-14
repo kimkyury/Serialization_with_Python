@@ -22,5 +22,5 @@ def create_json_file(data): #json파일 저장
     title = input('저장할 파일이름을 입력해주세요:')
     with open('./result/' + title + '.json', 'w', encoding='utf-8') as f: #해당경로에, 쓰기모드로, 인코딩 설정
         json.dump(data, f,  ensure_ascii=False, indent=4)
-    print('생성완료')
+    
 

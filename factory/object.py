@@ -8,7 +8,7 @@ import factory.excelControl as xl # factory폴더의 control를 불러와서 x1�
 def faker_generator(cnt = 0): #초기값은 cnt=0, 가상의 인물을 개수만큼 만드는 함수
     #초기실행(새로만들기)인지 확인
     if cnt == 0:
-        input() # 가상환경 쓸 경우, 버퍼에 가상환경 주소가 남아 있는 것을 해결하기 위해
+        input('\n   만들어봅시다! enter를 누르세요!\n   ') # 가상환경 쓸 경우, 버퍼에 가상환경 주소가 남아 있는 것을 해결하기 위해
         cnt = input('생성 갯수는 얼마인가요? (숫자만 입력)> ')
     
     #해당 개수만큼 생성

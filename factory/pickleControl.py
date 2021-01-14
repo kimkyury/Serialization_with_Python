@@ -9,5 +9,5 @@ def save_pickle(IPmans) :
         title = input('저장할 파일이름을 입력해주세요:')
         with open('./result/' + title + '.pickle', 'wb') as f:
             pickle.dump(IPmans, f, pickle.HIGHEST_PROTOCOL)
-        print('생성완료')
+   
        
