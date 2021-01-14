@@ -31,7 +31,6 @@ if __name__ == "__main__":  # 프로젝트 실행과 함께 시작
 
 
 
-
     #이전 파일 추가
     elif (act_flag ==2 and form_flag == 1):   #엑셀로
         print("수정중")
@@ -41,13 +40,29 @@ if __name__ == "__main__":  # 프로젝트 실행과 함께 시작
         print("수정중")
 
 
+
     #파일 확인
-    elif (act_flag ==3 and form_flag == 1):   # 확인을 엑셀로
-        print("수정중")
+    elif ((act_flag ==3) and (form_flag == 1)):   # 확인을 엑셀로
+        title=input("찾는 엑셀파일명을 입력해주세요: ")
+        wb = xl.load_workbook('./result/' + title + '.xlsx')
+        count = xl.get_Count_Ipmans(wb['data'])
+        IPmans = serialization(xl.get_data(wb['data'], count))
+        show_whole(IPmans)
+
     elif (act_flag ==3 and form_flag == 2):   # 확인을 JSON으로
-        print("수정중")
+        title=input("찾는 json파일명을 입력해주세요: ")
+        with open('./result/' + title + '.json', 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        IPmans = serialization(data)
+        show_whole(IPmans)
+
     elif (act_flag ==3 and form_flag == 3):   # 확인을 Pickle로
-        print("수정중")
+        title=input("찾는 피클파일명을 입력해주세요: ")
+        with open('./result/'+ title + '.pickle', 'rb') as f:
+            data = pickle.load(f)
+        show_whole(data)
+        
+        
         
     else:
         print("재실행 후, 번호를 하나씩만 골라주세요. ")
