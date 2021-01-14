@@ -47,6 +47,7 @@ def save_excel(wb): #엑셀파일을 저장함
     # result 폴더가 없다면 만든다.
     if os.path.isdir('result') is False:  
         os.mkdir('result')
-    
     # result 폴더에 저장
-    wb.save('./result/data.xlsx')
+    title = input('저장할 파일이름을 입력해주세요:')
+    wb.save('./result/' + title+ '.xlsx')
+    print('생성완료')
