@@ -163,6 +163,6 @@ pip-selfcheck.json
 venv2/
 
 result/
-secure_data.json
+/secure_data.json
 
 # End of https://www.toptal.com/developers/gitignore/api/python,code,virtualenv
