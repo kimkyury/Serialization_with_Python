@@ -1,7 +1,0 @@
-{
-    "host": "ipman001.c1qzckxxakdb.ap-northeast-2.rds.amazonaws.com",
-    "dbname": "db001",
-    "user": "postgres",
-    "password": "12341234",
-    "port": "5432"
-}
