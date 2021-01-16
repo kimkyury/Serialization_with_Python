@@ -1,10 +1,11 @@
 from factory.object import *  #얘를 통해서 contol도 상속받음
 from factory.jsonControl import *
 from factory.pickleControl import *
+from connectDB.postgre import *
 import pickle
 
 def select_format() : #형식을 지정하는 함수
-    form_flag = input("엑셀로 진행:1, Json으로 진행:2, Pickle로 진행:3 \n선택해주세요: ")
+    form_flag = input("엑셀로 진행:1, Json으로 진행:2, Pickle로 진행:3, DB로 진행:4 \n선택해주세요: ")
     return form_flag
 
 
@@ -14,8 +15,8 @@ if __name__ == "__main__":  # 프로젝트 실행과 함께 시작
     form_flag = int(select_format())
 
     #새파일 제작
-    if ((act_flag ==1) and (form_flag == 1)):   #엑셀로
-        IPmans = faker_generator()  # Fake 인간 생성
+    if ((act_flag ==1) and (form_flag ==   1)):   #엑셀로
+        IPmans = faker_generator()  # Fake 인간 생성/
         wb = xl.create_excel() # 기본엑셀파일 생성.  (def from excelControl.py)import object.py에서 control.py를 끌고왔음
         xl.set_Ipmans(wb['data'], IPmans) # 만든 xlsx에 fake담기 (def from excelControl.py)
         xl.save_excel(wb) #만든 엑셀파일 지정경로로 저장
@@ -26,11 +27,22 @@ if __name__ == "__main__":  # 프로젝트 실행과 함께 시작
         data = set_Ipman(IPmans)# Fake리스트를 dic형식으로 변환
         create_json_file(data) #json파일저장
         print('생성완료')
+        print('생성완료')
 
     elif ((act_flag ==1) and (form_flag == 3)):   #Pickle로
         IPmans = faker_generator() # Fake 인간 생성
         save_pickle(IPmans) #피클파일 저장
         print('생성완료')
+
+    elif ((act_flag ==1) and (form_flag == 4)):
+        with open('./secure_data.json', 'r', encoding='utf-8') as f:
+            secret = json.load(f)
+        
+        print(secret)
+        connect(secret['host'], secret['dbname'], secret['user'], secret['password'], secret['port'])
+        
+
+
 
 
     #이전 파일 추가

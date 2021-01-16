@@ -5,6 +5,22 @@ from faker import Faker  #가상 랜덤데이터
 import factory.excelControl as xl # factory폴더의 control를 불러와서 x1로 이름 짓기 
 
 
+class Ipman:  #만든 데이터를 출력시키기 위한 class
+    def __init__(self, name, address, ip):
+        self.name = name
+        self.address = address
+        self.ip = ip
+    def show_data(self):
+        print('name :', self.name)
+        print('address :', self.address)
+        print('ip :', self.ip)
+
+def show_whole(Ipmans): #파일의 리스트를 보는 함수
+    for i in Ipmans:
+        i.show_data()
+
+
+
 def faker_generator(cnt = 0): #초기값은 cnt=0, 가상의 인물을 개수만큼 만드는 함수
     #초기실행(새로만들기)인지 확인
     if cnt == 0:
@@ -31,19 +47,6 @@ def serialization(data): #직렬화시킨 데이터의 리스트를 리턴
 
 
 
-class Ipman:  #만든 데이터를 출력시키기 위한 class
-    def __init__(self, name, address, ip):
-        self.name = name
-        self.address = address
-        self.ip = ip
-    def show_data(self):
-        print('name :', self.name)
-        print('address :', self.address)
-        print('ip :', self.ip)
-
-def show_whole(Ipmans): #파일의 리스트를 보는 함수
-    for i in Ipmans:
-        i.show_data()
 
 
 
